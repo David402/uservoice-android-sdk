@@ -4,3 +4,4 @@
 .DS_Store
 out
 .idea/workspace.xml
+local.properties
