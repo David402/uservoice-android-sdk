@@ -2,9 +2,9 @@ package com.uservoice.uservoicesdk.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.babayaga.Babayaga;
 import com.uservoice.uservoicesdk.ui.PortalAdapter;
@@ -25,7 +25,7 @@ public class PortalActivity extends BaseListActivity implements SearchActivity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.uv_portal, menu);
+	    getSupportMenuInflater().inflate(R.menu.uv_portal, menu);
 		setupScopedSearch(menu);
 		return true;
 	}

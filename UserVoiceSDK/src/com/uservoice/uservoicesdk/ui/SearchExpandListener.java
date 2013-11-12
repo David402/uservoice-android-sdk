@@ -1,8 +1,8 @@
 package com.uservoice.uservoicesdk.ui;
 
 import android.annotation.SuppressLint;
-import android.view.MenuItem;
 
+import com.actionbarsherlock.view.MenuItem;
 import com.uservoice.uservoicesdk.activity.SearchActivity;
 
 @SuppressLint("NewApi")

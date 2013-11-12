@@ -7,12 +7,13 @@ import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.ViewFlipper;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.ui.MixedSearchAdapter;
 import com.uservoice.uservoicesdk.ui.PortalAdapter;
@@ -20,7 +21,8 @@ import com.uservoice.uservoicesdk.ui.SearchAdapter;
 import com.uservoice.uservoicesdk.ui.SearchExpandListener;
 import com.uservoice.uservoicesdk.ui.SearchQueryListener;
 
-public class BaseActivity extends FragmentActivity {
+
+public class BaseActivity extends SherlockFragmentActivity {
 
     protected Tab allTab;
     protected Tab articlesTab;
