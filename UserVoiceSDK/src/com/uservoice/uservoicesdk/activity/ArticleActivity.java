@@ -4,13 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.Session;
 import com.uservoice.uservoicesdk.babayaga.Babayaga;
@@ -58,7 +58,7 @@ public class ArticleActivity extends BaseActivity implements SearchActivity {
 	@Override
 	@SuppressLint("NewApi")
 	public boolean onCreateOptionsMenu(Menu menu) {
-	    getSupportMenuInflater().inflate(R.menu.uv_portal, menu);
+		getMenuInflater().inflate(R.menu.uv_portal, menu);
 		setupScopedSearch(menu);
 		return true;
 	}
