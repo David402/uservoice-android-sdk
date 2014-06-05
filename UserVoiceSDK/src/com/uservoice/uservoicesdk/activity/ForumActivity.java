@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -16,8 +18,6 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import com.uservoice.uservoicesdk.R;
 import com.uservoice.uservoicesdk.Session;
 import com.uservoice.uservoicesdk.babayaga.Babayaga;
@@ -53,6 +53,11 @@ public class ForumActivity extends BaseListActivity implements SearchActivity {
 
             @Override
             public void loadMore() {
+                // Need to notify data set change as initializing flag
+                // will impact count below
+                if (initializing) {
+                    notifyDataSetChanged();
+                }
                 initializing = false;
                 super.loadMore();
             }
@@ -142,6 +147,9 @@ public class ForumActivity extends BaseListActivity implements SearchActivity {
 
             @Override
             public RestTask search(final String query, final Callback<List<Suggestion>> callback) {
+                if (forum == null) {
+                    return null;
+                }
                 return Suggestion.searchSuggestions(forum, query, new Callback<List<Suggestion>>() {
 
                     @Override
@@ -179,7 +187,7 @@ public class ForumActivity extends BaseListActivity implements SearchActivity {
                 } else if (position != 1) {
                     Suggestion suggestion = (Suggestion) getModelAdapter().getItem(position);
                     Session.getInstance().setSuggestion(suggestion);
-                    SuggestionDialogFragment dialog = new SuggestionDialogFragment(suggestion);
+                    SuggestionDialogFragment dialog = new SuggestionDialogFragment(suggestion, null);
                     dialog.show(getSupportFragmentManager(), "SuggestionDialogFragment");
                 }
             }
@@ -204,7 +212,7 @@ public class ForumActivity extends BaseListActivity implements SearchActivity {
     @SuppressLint("NewApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getSupportMenuInflater().inflate(R.menu.uv_forum, menu);
+        getMenuInflater().inflate(R.menu.uv_forum, menu);
         if (hasActionBar()) {
             menu.findItem(R.id.uv_menu_search).setOnActionExpandListener(new SearchExpandListener(this));
             SearchView search = (SearchView) menu.findItem(R.id.uv_menu_search).getActionView();

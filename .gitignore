@@ -5,3 +5,5 @@
 out
 .idea/workspace.xml
 local.properties
+.settings
+proguard_logs
